@@ -1,6 +1,15 @@
-﻿# Offline-DataSet single-file upload test
+﻿# Offline-DataSet split upload
 
-This is a clean-room test repository for uploading one small dataset file first.
+This repository stores split dataset parts.
 
-Included file:
-- antmaze-giant-navigate-v0-val.npz
+Each original .npz file is split into 95 MiB chunks to satisfy GitHub's normal file-size limit.
+
+Reconstruction:
+1. Download one folder completely.
+2. Run merge_parts.ps1 -PartDir <folder-path>.
+3. Verify checksum against that folder's manifest.json.
+
+Directory layout:
+- data/<dataset-name>/
+  - *.part0000, *.part0001, ...
+  - manifest.json
